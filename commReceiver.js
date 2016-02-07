@@ -108,7 +108,7 @@ function toCname(hostnames, accessIP){
 commReceiver.prototype.listen = function(port){
 	var self = this;
 	var app = express();
-	app.use(bodyParser());
+        app.use(bodyParser({limit: '3mb'}));
 	app.use(cors());
 	var commReceiver = app.listen(this.setting.listenport, function () {
 		var host = commReceiver.address().address;
